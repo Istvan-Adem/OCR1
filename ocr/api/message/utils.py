@@ -11,5 +11,8 @@ async def clean_assistant_response(thread_id: str, run_id: str):
         for annotation in annotations:
             message_content.value = message_content.value.replace(annotation.text, f"")
         result = message_content.value
-    result = re.search(r'```markdown\s*(.*?)\s*```', result, re.DOTALL).group(1)
+    try:
+        result = re.search(r'```markdown\s*(.*?)\s*```', result, re.DOTALL).group(1)
+    except Exception as e:
+        pass
     return result
