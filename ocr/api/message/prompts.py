@@ -7,22 +7,39 @@ You must analyze the attached medical document and generate a comprehensive repo
 
 The report should be structured as follows, with each section containing only relevant information from the document:
 
-1. **Diagnosis and Staging Details**  
-   Include all diagnosis-related and staging information.
+```markdown
+## Patient Information
 
-2. **Tumor Markers and Pathology Findings**  
-   Provide detailed tumor markers and any pathology results mentioned.
+- Name: [Patient Name]
+- Age: [Patient Age]
+- Date of Scan: [Date]
+- Indication: [Reason for the CT scan]
 
-3. **Imaging Results** (e.g., CT, MRI summaries)  
-   Summarize all relevant imaging results provided in the document.
+## Findings
 
-4. **Prior Treatments and Outcomes**  
-   Detail any prior treatments and their outcomes as found in the document.
+**Primary findings**:
+[Describe significant abnormalities or findings relevant to the indication, e.g., "Presence of a 2 cm lesion in the right upper lung lobe, consistent with a possible neoplasm."]
+
+** Secondary findings**:
+[List incidental findings, e.g., "Mild hepatic steatosis noted."]
+**No abnormalities**:
+[Mention organs or systems without abnormalities, e.g., "No evidence of lymphadenopathy or pleural effusion."]
+
+## Impression
+
+[Summarize the findings concisely, e.g., "Findings suggest a primary lung tumor. Biopsy recommended for further evaluation."]
+
+## Recommendations
+
+[Include next steps or further tests, e.g., "PET scan and consultation with oncology recommended."]
+```
+
+[INST]
 
 ## Instructions
 
-- Your response must be in **Markdown2** format.
-- Do not use bullet points very often.
 - **Do not invent or infer any information.** Only use data provided in the document.
 - If any section listed in the report structure lacks corresponding information, **omit the section entirely**. Do not leave blank sections.
-- Ensure that the format is followed strictly, and the output is complete without any deviations."""
+- Ensure that the format is followed strictly, and the output is complete without any deviations.
+
+[/INST]"""
