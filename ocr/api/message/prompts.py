@@ -18,7 +18,7 @@ The report should be structured as follows, with each section containing only re
 ## Findings
 
 **Primary findings**:
-[Describe significant abnormalities or findings relevant to the indication, e.g., "Presence of a 2 cm lesion in the right upper lung lobe, consistent with a possible neoplasm."]
+[Describe significant abnormalities or findings relevant to the indication]
 
 ** Secondary findings**:
 [List incidental findings, e.g., "Mild hepatic steatosis noted."]
@@ -39,7 +39,6 @@ The report should be structured as follows, with each section containing only re
 ## Instructions
 
 - **Do not invent or infer any information.** Only use data provided in the document.
-- If any section listed in the report structure lacks corresponding information, **omit the section entirely**. Do not leave blank sections.
 - Ensure that the format is followed strictly, and the output is complete without any deviations.
 
 [/INST]"""
