@@ -1,13 +1,9 @@
-import json
 from functools import wraps
 from typing import Generic, Optional, TypeVar
 
-import pydash
 from fastapi import HTTPException
 from pydantic import BaseModel
 from starlette.responses import JSONResponse
-
-from ocr.core.config import settings
 
 T = TypeVar('T')
 
@@ -40,32 +36,6 @@ def exception_wrapper(http_error: int, error_message: str):
                 return await func(*args, **kwargs)
             except Exception as e:
                 raise HTTPException(status_code=http_error, detail=error_message) from e
-
-        return wrapper
-
-    return decorator
-
-
-def openai_wrapper(
-        temperature: int | float = 0, model: str = "gpt-4o-mini", is_json: bool = False, return_: str = None
-):
-    def decorator(func):
-        @wraps(func)
-        async def wrapper(*args, **kwargs) -> str:
-            messages = await func(*args, **kwargs)
-            completion = await settings.OPENAI_CLIENT.chat.completions.create(
-                messages=messages,
-                temperature=temperature,
-                n=1,
-                model=model,
-                response_format={"type": "json_object"} if is_json else {"type": "text"}
-            )
-            response = completion.choices[0].message.content
-            if is_json:
-                response = json.loads(response)
-                if return_:
-                    return pydash.get(response, return_)
-            return response
 
         return wrapper
 
