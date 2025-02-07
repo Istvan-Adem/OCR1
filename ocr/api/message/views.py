@@ -15,7 +15,7 @@ async def get_all_chat_messages(
         contents = await file.read()
         images = divide_images(contents)
         text_content = extract_text_from_images(images)
-        response = await generate_report(text_content)
-        return OcrResponseWrapper(data=OcrResponse(text=clean_response(response)))
+        # response = await generate_report(text_content)
+        return OcrResponseWrapper(data=OcrResponse(text=text_content))
     finally:
         await file.close()
