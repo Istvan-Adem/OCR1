@@ -1,9 +1,6 @@
-import os
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from starlette.staticfiles import StaticFiles
 
 from ocr.core.config import settings
 from ocr.core.wrappers import OcrResponseWrapper, ErrorOcrResponse
@@ -20,15 +17,6 @@ def create_app() -> FastAPI:
         allow_origins=["*"],
         allow_methods=["*"],
         allow_headers=["*"],
-    )
-
-    static_directory = os.path.join(settings.BASE_DIR, 'static')
-    if not os.path.exists(static_directory):
-        os.makedirs(static_directory)
-
-    app.mount(
-        '/static',
-        StaticFiles(directory='static'),
     )
 
     @app.exception_handler(StarletteHTTPException)

@@ -1,7 +1,7 @@
 class OCRPrompts:
     generate_general_answer = """## Task
 
-You must analyze the attached medical document and generate a comprehensive report in **Markdown2** format. Ensure that every detail provided in the document is included, and do not omit or modify any information. Your output must strictly follow the required format.
+You must analyze the text extracted from medical document and generate a comprehensive report in **Markdown2** format. Ensure that every detail provided in the document is included, and do not omit or modify any information. Your output must strictly follow the required format.
 
 ## Report Structure
 
@@ -38,7 +38,7 @@ The report should be structured as follows, with each section containing only re
 
 ## Instructions
 
-- **Do not invent or infer any information.** Only use data provided in the document.
+- **Do not invent or infer any information.** Only use data provided in the user request.
 - Ensure that the format is followed strictly, and the output is complete without any deviations.
 
 [/INST]"""

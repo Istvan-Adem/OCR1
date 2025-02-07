@@ -1,7 +1,8 @@
-import base64
 import io
 import re
 
+import pytesseract
+from PIL import Image
 from pdf2image import convert_from_bytes
 
 
@@ -16,21 +17,15 @@ def divide_images(contents: bytes) -> list[bytes]:
     return image_bytes_list
 
 
-def prepare_request_content(images: list[bytes]):
-    content = [
-        {"type": "text", "text": "Generate a report on the attached document"},
-        *[
-            {
-                "type": "image_url",
-                "image_url": {
-                    "url": f"data:image/jpeg;base64,{base64.b64encode(image).decode('utf-8')}",
-                },
-            }
-            for image in images
-        ]
-    ]
-    return content
+def extract_text_from_images(images: list[bytes]) -> str:
+    extracted_texts = []
 
+    for image_bytes in images:
+        image = Image.open(io.BytesIO(image_bytes))
+        text = pytesseract.image_to_string(image)
+        extracted_texts.append(text)
+
+    return '\n'.join(extracted_texts)
 
 def clean_response(text: str) -> str:
     try:
