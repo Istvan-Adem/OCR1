@@ -1,4 +1,4 @@
-from fastapi import File, UploadFile
+from fastapi import File, UploadFile, HTTPException
 
 from ocr.api.message import ocr_router
 from ocr.api.message.openai_request import generate_report
@@ -13,7 +13,12 @@ async def get_all_chat_messages(
 ) -> OcrResponseWrapper[OcrResponse]:
     try:
         contents = await file.read()
-        images = divide_images(contents)
+        if file.filename.endswith('.pdf'):
+            images = divide_images(contents)
+        elif file.filename.endswith(('.jpg', ".jpeg", ".png")):
+            images = [contents]
+        else:
+            raise HTTPException(status_code=400, detail='Unsupported file type.')
         text_content = extract_text_from_images(images)
         # response = await generate_report(text_content)
         return OcrResponseWrapper(data=OcrResponse(text=text_content))
