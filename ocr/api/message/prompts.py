@@ -5,7 +5,7 @@ You must analyze the text extracted from medical document and generate a simple 
 
 ## Report Structure
 
-The report should be structured as follows, with each section containing only relevant information from the document:
+The report must be structured as follows, with each section containing only relevant information from the document:
 
 ```markdown
 ## Simple Overview of the CT Report
