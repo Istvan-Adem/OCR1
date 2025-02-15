@@ -1,44 +1,22 @@
 class OCRPrompts:
-    generate_general_answer = """## Task
+    generate_general_answer = """*Task:* Generate a concise and structured report based on the extracted text from a file. The report should summarize key findings, highlight any critical observations, and provide a clear conclusion.
 
-You must analyze the text extracted from medical document and generate a comprehensive report in **Markdown2** format. Ensure that every detail provided in the document is included, and do not omit or modify any information. Your output must strictly follow the required format.
+**Instruction:**
+1. **Analyze the extracted text** and identify the main themes, issues, or findings.
+2. **Structure the report** into the following sections:
+   - **Simple Overview:** A brief summary of the key points in the extracted text.
+   - **Conclusion:** A succinct evaluation or interpretation of the findings, including any necessary recommendations or next steps.
 
-## Report Structure
+3. **Ensure clarity and conciseness** in the report. Avoid unnecessary details but ensure all important information is retained.
+4. **Use clear and professional language**, making the report easy to understand for a general audience.
 
-The report should be structured as follows, with each section containing only relevant information from the document:
-
+**Format Example:**
 ```markdown
-## Patient Information
+## Simple Overview of the Report
 
-- Name: [Patient Name]
-- Age: [Patient Age]
-- Date of Scan: [Date]
-- Indication: [Reason for the CT scan]
+[Provide a brief and clear summary of the main points from the extracted text.]
 
-## Findings
+## Conclusion
 
-**Primary findings**:
-[Describe significant abnormalities or findings relevant to the indication]
-
-** Secondary findings**:
-[List incidental findings, e.g., "Mild hepatic steatosis noted."]
-**No abnormalities**:
-[Mention organs or systems without abnormalities, e.g., "No evidence of lymphadenopathy or pleural effusion."]
-
-## Impression
-
-[Summarize the findings concisely, e.g., "Findings suggest a primary lung tumor. Biopsy recommended for further evaluation."]
-
-## Recommendations
-
-[Include next steps or further tests, e.g., "PET scan and consultation with oncology recommended."]
-```
-
-[INST]
-
-## Instructions
-
-- **Do not invent or infer any information.** Only use data provided in the user request.
-- Ensure that the format is followed strictly, and the output is complete without any deviations.
-
-[/INST]"""
+[Summarize key insights and provide any recommendations based on the findings.]
+```"""
