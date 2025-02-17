@@ -21,6 +21,6 @@ async def get_all_chat_messages(
             raise HTTPException(status_code=400, detail='Unsupported file type.')
         text_content = extract_text_from_images(images)
         response = await generate_report(text_content)
-        return OcrResponseWrapper(data=OcrResponse(text=clean_response(response)))
+        return OcrResponseWrapper(data=OcrResponse(text=clean_response(response), originalText=text_content))
     finally:
         await file.close()
