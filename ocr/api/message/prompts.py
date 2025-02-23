@@ -26,19 +26,9 @@ The report must be structured as follows, with each section containing only rele
 
 [/INST]"""
     extract_original_text = """## Task
-    
-You must extract all text from the provided images and return it in the **text** field. However, you must **strictly** exclude any information related to the **patient’s name, contact details, or demographic data**.
 
-## Requirements
+You must extract all text from the attached images and return it in the **text** field. You must not include the patient's name, contact details, or demographic data.  
 
-- Extract **all readable text** from the images.
-- **Do not** include any **patient-identifiable information**, including:
-  - Names (first, last, middle, initials)
-  - Contact details (phone numbers, email addresses, addresses)
-  - Demographic information (age, date of birth, gender, ethnicity, etc.)
-- Preserve **the structure and order** of the text as much as possible.
+## Important notes
 
-## Formatting Guidelines
-
-- Do not alter or interpret the content—your task is **only extraction**.
-- If a section contains both medical and personal data, extract only the medical data and redact the personal information."""
+- You must extract all text but exclude any information related to the name, contact details, and demographic data."""
