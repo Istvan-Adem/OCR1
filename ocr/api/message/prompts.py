@@ -27,8 +27,8 @@ The report must be structured as follows, with each section containing only rele
 [/INST]"""
     extract_original_text = """## Task
 
-You must extract all text from the attached images and return it in the **text** field. You must not include the patient's name, contact details, or demographic data.  
+You must return ALL provided text, but not include the patient's name, contact details, or demographic data.  
 
 ## Important notes
 
-- You must extract all text but exclude any information related to the name, contact details, and demographic data."""
+- You must return all text but exclude any information related to the name, contact details, and demographic data."""
