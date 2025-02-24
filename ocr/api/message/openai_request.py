@@ -3,7 +3,7 @@ from ocr.core.wrappers import openai_wrapper
 
 
 @openai_wrapper(model='gpt-4o-mini')
-async def generate_report(content: list):
+async def generate_report(content: str):
     messages = [
         {
             "role": "system",
@@ -18,7 +18,7 @@ async def generate_report(content: list):
 
 
 @openai_wrapper(model='gpt-4o-mini')
-async def extract_original_text(content: list):
+async def extract_original_text(content: str):
     messages = [
         {
             "role": "system",
