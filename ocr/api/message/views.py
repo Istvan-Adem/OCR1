@@ -1,9 +1,6 @@
-import asyncio
-
 from fastapi import File, UploadFile, HTTPException
 
 from ocr.api.message import ocr_router
-from ocr.api.message.openai_request import generate_report, extract_original_text
 from ocr.api.message.schemas import OcrResponse
 from ocr.api.message.utils import divide_images, clean_response, extract_text_from_images
 from ocr.core.wrappers import OcrResponseWrapper
@@ -26,7 +23,7 @@ async def get_all_chat_messages(
         #     extract_original_text(text_content),
             # generate_report(text_content)
         # )
-        cleaned_original_text = await extract_original_text(text_content)
+        cleaned_original_text = text_content
         return OcrResponseWrapper(data=OcrResponse(text=clean_response(text_content), originalText=cleaned_original_text))
     finally:
         await file.close()
