@@ -14,6 +14,7 @@ async def get_all_chat_messages(
         contents = await file.read()
         if file.filename.endswith('.pdf'):
             images = divide_images(contents)
+
         elif file.filename.endswith(('.jpg', ".jpeg", ".png")):
             images = [contents]
         else:
